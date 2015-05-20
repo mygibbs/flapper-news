@@ -33,7 +33,7 @@ app.controller('MainCtrl', [
 function($scope, posts){
 	$scope.test = 'Hello world!';
 	$scope.posts = posts.posts;
-	
+console.log(1);
 	$scope.posts.push({
 		title: $scope.title,
 		link: $scope.link,
@@ -43,7 +43,7 @@ function($scope, posts){
 			{author: 'Bob', body: 'Great idea but everything is wrong!', upvotes: 0}
 		]
 	});
-	
+console.log(2);	
 	$scope.addPost = function(){
 		if(!$scope.title || $scope.title === '') { return; }
 		$scope.posts.push({
@@ -54,10 +54,11 @@ function($scope, posts){
 		$scope.title = '';
 		$scope.link = '';
 	};
-	
+console.log(3);	
 	$scope.incrementUpvotes = function(post){
 		post.upvotes += 1;
 	}
+console.log(4);
 }]);
 
 app.controller('PostsCtrl', [
