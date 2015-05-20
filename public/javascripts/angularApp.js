@@ -12,7 +12,7 @@ function($stateProvider, $urlRouterProvider){
 			controller: 'MainCtrl'
 		})
 		.state('posts', {
-			url: 'posts/{id}',
+			url: '/posts/{id}',
 			templateUrl: '/posts.html',
 			controller: 'PostsCtrl'
 		});
@@ -31,34 +31,27 @@ app.controller('MainCtrl', [
 '$scope',
 'posts',
 function($scope, posts){
-	$scope.test = 'Hello world!';
 	$scope.posts = posts.posts;
-console.log(1);
-	$scope.posts.push({
-		title: $scope.title,
-		link: $scope.link,
-		upvotes: 0,
-		comments: [
-			{author: 'Joe', body: 'Cool post!', upvotes: 0},
-			{author: 'Bob', body: 'Great idea but everything is wrong!', upvotes: 0}
-		]
-	});
-console.log(2);	
+
 	$scope.addPost = function(){
 		if(!$scope.title || $scope.title === '') { return; }
 		$scope.posts.push({
 			title: $scope.title, 
 			link: $scope.link,
-			upvotes: 0
+			upvotes: 0,
+			comments: [
+				{author: 'Joe', body: 'Cool post!', upvotes: 0},
+				{author: 'Bob', body: 'Great idea but everything is wrong!', upvotes: 0}
+			]
 		});
 		$scope.title = '';
 		$scope.link = '';
 	};
-console.log(3);	
+
 	$scope.incrementUpvotes = function(post){
 		post.upvotes += 1;
 	}
-console.log(4);
+
 }]);
 
 app.controller('PostsCtrl', [
